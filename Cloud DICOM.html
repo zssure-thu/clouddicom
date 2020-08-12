@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://www.clouddicom.com/profile.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Cloud DICOM</title>
+<script src="./Cloud DICOM_files/dicomParser.js"></script>
+<script src="./Cloud DICOM_files/jquery.min.js"></script>
+<script src="./Cloud DICOM_files/cornerstone.js"></script>
+<script src="./Cloud DICOM_files/marchingsquares-isocontours.js">   </script>
+<link rel="stylesheet" href="./Cloud DICOM_files/bootstrap.min.css">
+<link rel="stylesheet" href="./Cloud DICOM_files/style.css">
+<script src="./Cloud DICOM_files/jquery-1.11.2.min.js"></script>
+<script src="./Cloud DICOM_files/bootstrap.min.js"></script>
+<script src="./Cloud DICOM_files/FileSaver.min.js"></script>
+<script src="./Cloud DICOM_files/Blob.js"></script>
+<script src="./Cloud DICOM_files/Three.js"></script>
+<script src="./Cloud DICOM_files/Detector.js"></script>
+<script src="./Cloud DICOM_files/Stats.js"></script>
+<script src="./Cloud DICOM_files/OrbitControls.js"></script>
+<script src="./Cloud DICOM_files/THREEx.KeyboardState.js"></script>
+<script src="./Cloud DICOM_files/THREEx.FullScreen.js"></script>
+<script src="./Cloud DICOM_files/THREEx.WindowResize.js"></script>
+<script src="./Cloud DICOM_files/MarchingCubesData.js"></script>
+<script src="./Cloud DICOM_files/jquery-1.9.1.js"></script>
+<script src="./Cloud DICOM_files/jquery-ui.js"></script>
+<script src="./Cloud DICOM_files/jquery.minicolors.js"></script>
+<link rel="stylesheet" href="./Cloud DICOM_files/jquery.minicolors.css">
+<script type="text/javascript" src="./Cloud DICOM_files/DAT.GUI.min.js"></script><style type="text/css">.dg ul{list-style:none;margin:0;padding:0;width:100%;clear:both}.dg.ac{position:fixed;top:0;left:0;right:0;height:0;z-index:0}.dg:not(.ac) .main{overflow:hidden}.dg.main{-webkit-transition:opacity 0.1s linear;-o-transition:opacity 0.1s linear;-moz-transition:opacity 0.1s linear;transition:opacity 0.1s linear}.dg.main.taller-than-window{overflow-y:auto}.dg.main.taller-than-window .close-button{opacity:1;margin-top:-1px;border-top:1px solid #2c2c2c}.dg.main ul.closed .close-button{opacity:1 !important}.dg.main:hover .close-button,.dg.main .close-button.drag{opacity:1}.dg.main .close-button{-webkit-transition:opacity 0.1s linear;-o-transition:opacity 0.1s linear;-moz-transition:opacity 0.1s linear;transition:opacity 0.1s linear;border:0;position:absolute;line-height:19px;height:20px;cursor:pointer;text-align:center;background-color:#000}.dg.main .close-button:hover{background-color:#111}.dg.a{float:right;margin-right:15px;overflow-x:hidden}.dg.a.has-save ul{margin-top:27px}.dg.a.has-save ul.closed{margin-top:0}.dg.a .save-row{position:fixed;top:0;z-index:1002}.dg li{-webkit-transition:height 0.1s ease-out;-o-transition:height 0.1s ease-out;-moz-transition:height 0.1s ease-out;transition:height 0.1s ease-out}.dg li:not(.folder){cursor:auto;height:27px;line-height:27px;overflow:hidden;padding:0 4px 0 5px}.dg li.folder{padding:0;border-left:4px solid rgba(0,0,0,0)}.dg li.title{cursor:pointer;margin-left:-4px}.dg .closed li:not(.title),.dg .closed ul li,.dg .closed ul li > *{height:0;overflow:hidden;border:0}.dg .cr{clear:both;padding-left:3px;height:27px}.dg .property-name{cursor:default;float:left;clear:left;width:40%;overflow:hidden;text-overflow:ellipsis}.dg .c{float:left;width:60%}.dg .c input[type=text]{border:0;margin-top:4px;padding:3px;width:100%;float:right}.dg .has-slider input[type=text]{width:30%;margin-left:0}.dg .slider{float:left;width:66%;margin-left:-5px;margin-right:0;height:19px;margin-top:4px}.dg .slider-fg{height:100%}.dg .c input[type=checkbox]{margin-top:9px}.dg .c select{margin-top:5px}.dg .cr.function,.dg .cr.function .property-name,.dg .cr.function *,.dg .cr.boolean,.dg .cr.boolean *{cursor:pointer}.dg .selector{display:none;position:absolute;margin-left:-9px;margin-top:23px;z-index:10}.dg .c:hover .selector,.dg .selector.drag{display:block}.dg li.save-row{padding:0}.dg li.save-row .button{display:inline-block;padding:0px 6px}.dg.dialogue{background-color:#222;width:460px;padding:15px;font-size:13px;line-height:15px}#dg-new-constructor{padding:10px;color:#222;font-family:Monaco, monospace;font-size:10px;border:0;resize:none;box-shadow:inset 1px 1px 1px #888;word-wrap:break-word;margin:12px 0;display:block;width:440px;overflow-y:scroll;height:100px;position:relative}#dg-local-explain{display:none;font-size:11px;line-height:17px;border-radius:3px;background-color:#333;padding:8px;margin-top:10px}#dg-local-explain code{font-size:10px}#dat-gui-save-locally{display:none}.dg{color:#eee;font:11px 'Lucida Grande', sans-serif;text-shadow:0 -1px 0 #111}.dg.main::-webkit-scrollbar{width:5px;background:#1a1a1a}.dg.main::-webkit-scrollbar-corner{height:0;display:none}.dg.main::-webkit-scrollbar-thumb{border-radius:5px;background:#676767}.dg li:not(.folder){background:#1a1a1a;border-bottom:1px solid #2c2c2c}.dg li.save-row{line-height:25px;background:#dad5cb;border:0}.dg li.save-row select{margin-left:5px;width:108px}.dg li.save-row .button{margin-left:5px;margin-top:1px;border-radius:2px;font-size:9px;line-height:7px;padding:4px 4px 5px 4px;background:#c5bdad;color:#fff;text-shadow:0 1px 0 #b0a58f;box-shadow:0 -1px 0 #b0a58f;cursor:pointer}.dg li.save-row .button.gears{background:#c5bdad url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAANCAYAAAB/9ZQ7AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQJJREFUeNpiYKAU/P//PwGIC/ApCABiBSAW+I8AClAcgKxQ4T9hoMAEUrxx2QSGN6+egDX+/vWT4e7N82AMYoPAx/evwWoYoSYbACX2s7KxCxzcsezDh3evFoDEBYTEEqycggWAzA9AuUSQQgeYPa9fPv6/YWm/Acx5IPb7ty/fw+QZblw67vDs8R0YHyQhgObx+yAJkBqmG5dPPDh1aPOGR/eugW0G4vlIoTIfyFcA+QekhhHJhPdQxbiAIguMBTQZrPD7108M6roWYDFQiIAAv6Aow/1bFwXgis+f2LUAynwoIaNcz8XNx3Dl7MEJUDGQpx9gtQ8YCueB+D26OECAAQDadt7e46D42QAAAABJRU5ErkJggg==) 2px 1px no-repeat;height:7px;width:8px}.dg li.save-row .button:hover{background-color:#bab19e;box-shadow:0 -1px 0 #b0a58f}.dg li.folder{border-bottom:0}.dg li.title{padding-left:16px;background:#000 url(data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlI+hKgFxoCgAOw==) 6px 10px no-repeat;cursor:pointer;border-bottom:1px solid rgba(255,255,255,0.2)}.dg .closed li.title{background-image:url(data:image/gif;base64,R0lGODlhBQAFAJEAAP////Pz8////////yH5BAEAAAIALAAAAAAFAAUAAAIIlGIWqMCbWAEAOw==)}.dg .cr.boolean{border-left:3px solid #806787}.dg .cr.function{border-left:3px solid #e61d5f}.dg .cr.number{border-left:3px solid #2fa1d6}.dg .cr.number input[type=text]{color:#2fa1d6}.dg .cr.string{border-left:3px solid #1ed36f}.dg .cr.string input[type=text]{color:#1ed36f}.dg .cr.function:hover,.dg .cr.boolean:hover{background:#111}.dg .c input[type=text]{background:#303030;outline:none}.dg .c input[type=text]:hover{background:#3c3c3c}.dg .c input[type=text]:focus{background:#494949;color:#fff}.dg .c .slider{background:#303030;cursor:ew-resize}.dg .c .slider-fg{background:#2fa1d6}.dg .c .slider:hover{background:#3c3c3c}.dg .c .slider:hover .slider-fg{background:#44abda}
+</style>
+<link rel="stylesheet" href="./Cloud DICOM_files/styledatgui.css">
+
+<link rel="stylesheet" href="./Cloud DICOM_files/font-awesome.min.css">
+
+<script src="./Cloud DICOM_files/jquery.awesome-cursor.min.js"></script>
+
+
+<script src="./Cloud DICOM_files/get_structure_info.js">   </script>
+<!--<script src='min_gcc.js'>   </script>-->
+
+
+<script src="./Cloud DICOM_files/get_2d_array.js"></script>
+<script src="./Cloud DICOM_files/get_3d_array.js"></script>
+<script src="./Cloud DICOM_files/flood.js">   </script>
+<script src="./Cloud DICOM_files/struct_flood.js">   </script>
+<script src="./Cloud DICOM_files/draw_ct.js">   </script>
+<script src="./Cloud DICOM_files/draw_struct_coronal.js">   </script>
+<script src="./Cloud DICOM_files/load_dicom_functions.js"></script>
+<script src="./Cloud DICOM_files/get_scaler_to_poly.js"></script>
+<script src="./Cloud DICOM_files/get_3d_Uint8Array_mod.js"></script>
+<script src="./Cloud DICOM_files/get_interpolate.js"></script>
+<script src="./Cloud DICOM_files/get_body.js"></script>
+
+
+
+<style> 
+.separate {
+  -webkit-columns: 100px 2; /* Chrome, Safari, Opera */
+  -moz-columns: 100px 2; /* Firefox */
+  columns: 100px 2;
+}
+</style>
+
+<style>
+body {
+  font: 16px sans-serif;
+  line-height: 1.8;
+  padding: 0 40px;
+  margin-bottom: 200px;
+}
+a {
+  color: #08c;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.form-group {
+  margin: 20px 0;
+}
+label {
+  color: #888;
+}
+</style>
+
+
+</head><body onresize="resize_canvas()" oncontextmenu="return false" style="background-color: rgb(50, 50, 50); cursor: default;">
+
+<input id="myfiles" multiple="" type="file" style="display: none;">
+<input id="mydir" type="file" webkitdirectory="" directory="" style="display: none;">
+
+<canvas id="canvas" width="586" height="586" style="position: absolute; left:250px; top:55px"></canvas>
+<div id="ThreeJS" style="position: absolute; left: 851px; top: 55px; cursor: pointer;"><canvas width="480" height="480" style="width: 384px; height: 384px;"></canvas></div>
+<div class="separate">
+
+<canvas id="canvas2" width="187" height="192" style="position: absolute; left: 851px; top: 449px;"></canvas>
+<canvas id="canvas3" width="187" height="192" style="position: absolute; left: 1048px; top: 449px;"></canvas>
+<div>
+
+<div class="moveGUI">
+<div class="dg main" style="width: 245px;"><ul><li class="folder"><div class="dg"><ul><li class="title">IMPORT PATIENT</li><li class="cr function"><div><span class="property-name">Select Files</span><div class="c"><div class="button"></div></div></div></li><li class="cr function"><div><span class="property-name">Select Directory</span><div class="c"><div class="button"></div></div></div></li></ul></div></li><li class="folder"><div class="dg"><ul><li class="title">Create Structure</li><li class="cr string color" style="border-left-color: rgb(0, 194, 255);"><div><span class="property-name">color</span><div class="c"><input type="text" style="outline: none; text-align: center; color: rgb(255, 255, 255); border: 0px; font-weight: bold; text-shadow: rgba(0, 0, 0, 0.7) 0px 1px 1px; background-color: rgb(0, 194, 255);"><div class="selector" style="width: 122px; height: 102px; padding: 3px; background-color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 3px;"><div class="field-knob" style="position: absolute; width: 12px; height: 12px; border: 2px solid rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 3px; border-radius: 12px; z-index: 1; margin-left: 93px; margin-top: -7px; background-color: rgb(0, 194, 255);"></div><div class="saturation-field" style="width: 100px; height: 100px; border: 1px solid rgb(85, 85, 85); margin-right: 3px; display: inline-block; cursor: pointer; background: -webkit-linear-gradient(left, rgb(255, 255, 255) 0%, rgb(0, 194, 255) 100%);"><div style="width: 100%; height: 100%; background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);"></div></div><div class="hue-field" style="width: 10px; height: 100px; display: inline-block; border: 1px solid rgb(85, 85, 85); cursor: ns-resize; background: -webkit-linear-gradient(top, rgb(255, 0, 0) 0%, rgb(255, 0, 255) 17%, rgb(0, 0, 255) 34%, rgb(0, 255, 255) 50%, rgb(0, 255, 0) 67%, rgb(255, 255, 0) 84%, rgb(255, 0, 0) 100%);"><div class="hue-knob" style="position: absolute; width: 15px; height: 2px; border-right: 4px solid rgb(255, 255, 255); z-index: 1; margin-top: 46.0131px;"></div></div></div></div></div></li><li class="cr string"><div><span class="property-name">Name</span><div class="c"><input type="text"></div></div></li><li class="cr function"><div><span class="property-name">Add</span><div class="c"><div class="button"></div></div></div></li></ul></div></li></ul><div class="close-button" style="width: 245px;">Close Controls</div></div></div>
+<script type="text/javascript" src="./Cloud DICOM_files/contouring.js"></script>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-static-top">
+<div class="container">
+<ul class="nav navbar-nav">
+ <a href="https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.clouddicom.com" target="_blank" rel="nofollow"><img src="./Cloud DICOM_files/ssl-secure-badge.png" alt="Expedited SSL Scanner"></a>
+<li class="dropdown">
+
+
+<a href="http://www.clouddicom.com/profile.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-tasks"></span> Menu<span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a href="http://www.clouddicom.com/info.html"><span class="glyphicon glyphicon-facetime-video"> How to Video</span></a></li>
+<li class="divider"></li>
+<li><a href="http://www.clouddicom.com/info.html"><span class="glyphicon glyphicon-lock"> Security</span></a></li>
+<li class="divider"></li>
+<li><a href="http://www.clouddicom.com/info.html"><span class="glyphicon glyphicon-earphone"> Contact</span></a></li>
+
+</ul>
+</li>
+
+
+<li class="dropdown">
+<a href="http://www.clouddicom.com/profile.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fa fa-pencil-square-o fa-fw"></span> Contouring Tools<span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a button="" onclick="getpencil()"><span class="glyphicon glyphicon-pencil"> Pencil</span></a></li>    
+<li class="divider"></li>
+<li><a button="" onclick="getbrushs()"><span class="fa fa-paint-brush fa-fw"> Brush Small</span></a></li>
+<li><a button="" onclick="getbrushm()"><span class="fa fa-paint-brush fa-fw"> Brush Medium</span></a></li>
+<li><a button="" onclick="getbrushl()"><span class="fa fa-paint-brush fa-fw"> Brush Large</span></a></li>
+<li><a button="" onclick="getbrushxl()"><span class="fa fa-paint-brush fa-fw "> Brush X-Large</span></a></li>
+</ul>
+
+</li><li class="dropdown">
+<a href="http://www.clouddicom.com/profile.html#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="fa fa-cubes fa-fw "></span> Contouring Functions<span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu">
+<li><a onclick="getinterpolate()"> Interpolate</a></li>
+<li><a onclick="getrendermesh()"> Render Mesh</a></li>
+<li class="divider"></li>
+<li><a onclick="getbody()"> Create Body</a></li>
+<li><a onclick="getlung()"> Create Lung</a></li>
+<li><a onclick="getcouch()"> Define Couch</a></li>
+
+</ul>
+</li></ul></div>
+</nav>
+
+
+
+<script>
+var couchposition = 10000;
+var body=false;
+function getpencil() {
+drawtool = 'pencil';
+var rgbt = struct.colorsname[current_structure];
+hexcolor=rgbToHex(rgbt[0], rgbt[1], rgbt[2]);
+    $(canvas)
+        .awesomeCursor('pencil', {
+        color: hexcolor,
+        size: 20,
+        hotspot: [1, 20],
+        outline: null
+    });
+
+console.log(drawtool)
+}
+
+function getbrushfcn() {
+drawtool = 'brush';
+create_circle();
+var rgbt = struct.colorsname[current_structure];
+hexcolor=rgbToHex(rgbt[0], rgbt[1], rgbt[2]);
+    $(canvas)
+        .awesomeCursor('circle-thin', {
+        color: hexcolor,
+        size: circ_size*2,
+        hotspot: [circ_size+1, circ_size+1],
+        outline: null
+    });
+}
+
+function getbrushs() {
+circ_size = 10;
+getbrushfcn();
+}
+
+function getbrushm() {
+circ_size = 20;
+getbrushfcn();
+}
+
+function getbrushl() {
+circ_size = 30;
+getbrushfcn();
+}
+
+function getbrushxl() {
+circ_size = 40;
+getbrushfcn();
+}
+
+function getlung() {
+console.log(couchposition)
+}
+function getcouch() {
+console.log(111)
+drawtool = 'couch';
+
+var rgbt = struct.colorsname[current_structure];
+hexcolor=rgbToHex(255, 0,0);
+    $(canvas)
+        .awesomeCursor('ellipsis-h', {
+        color: hexcolor,
+        size: circ_size*2,
+        hotspot: [circ_size+1, circ_size+1],
+        outline: null
+    });
+console.log(drawtool);
+}
+function getinterpolate() {
+console.log(111)
+get_interpolate();
+}
+function getrendermesh() {
+init();
+animate();
+}
+
+
+
+var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+    // Opera 8.0+ (UA detection to detect Blink/v8-powered Opera)
+var isFirefox = typeof InstallTrigger !== 'undefined';   // Firefox 1.0+
+var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+    // At least Safari 3+: "[object HTMLElementConstructor]"
+var isChrome = !!window.chrome && !isOpera;              // Chrome 1+
+var isIE = /*@cc_on!@*/false || !!document.documentMode; // At least IE6
+
+var windowtop = 55;
+window_ratio = 800;
+var bottommargin = 100;
+var bottommarginthree = 10;
+var inbetweenmargin = 255;
+document.body.style.backgroundColor = 'rgb(50,50,50)';
+var c=document.getElementById("canvas");
+c.height = window.innerHeight-bottommargin;
+c.width = window.innerHeight-bottommargin;
+var ctx=c.getContext("2d");
+ctx.fillStyle='rgb(0,0,0)';
+ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight); 
+
+var windowthree = (window.innerHeight-bottommargin-bottommarginthree)*2/3;
+var windowsmallwidth = (windowthree-bottommarginthree)*1/2;
+var windowsmallheight = (window.innerHeight-bottommargin-bottommarginthree)*1/3;
+var c=document.getElementById("canvas2");
+c.height = windowsmallheight;
+c.width = windowsmallwidth;
+c.style.top = windowthree +windowtop+bottommarginthree+ "px";
+c.style.left = window.innerHeight-bottommargin+inbetweenmargin +bottommarginthree+ "px";
+var ctx=c.getContext("2d");
+ctx.fillStyle='rgb(0,0,0)';
+ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);
+
+var c=document.getElementById("canvas3");
+c.height = windowsmallheight;
+c.width  = windowsmallwidth;
+c.style.top  = windowthree +windowtop+bottommarginthree+ "px";
+c.style.left = bottommarginthree +windowsmallwidth + window.innerHeight-bottommargin+inbetweenmargin +bottommarginthree+ "px";
+var ctx=c.getContext("2d");
+ctx.fillStyle='rgb(0,0,0)';
+ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);
+
+var c=document.getElementById("ThreeJS");
+c.style.left = window.innerHeight-bottommargin+inbetweenmargin +bottommarginthree+ "px";
+var SCREEN_WIDTH = windowthree, SCREEN_HEIGHT = windowthree;
+
+
+//renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+//c.height = window.innerHeight-bottommargin;
+//c.width = window.innerHeight-bottommargin;
+
+var imageratio;
+        function resize_canvas(){
+imageratio = (window.innerHeight-bottommargin)/ctsize[0];
+          if (ct_sort.length!=0)
+          {
+var c=document.getElementById("canvas");
+c.height = window.innerHeight-bottommargin;
+c.width = window.innerHeight-bottommargin;
+draw_ct("canvas",ct_sort,[ctsize[0],ctsize[1]],current_slice[2],'axial_first');
+var windowthree = (window.innerHeight-bottommargin-bottommarginthree)*2/3;
+var windowsmallwidth = (windowthree-bottommarginthree)*1/2;
+var windowsmallheight = (window.innerHeight-bottommargin-bottommarginthree)*1/3;
+var c=document.getElementById("canvas2");
+c.height = windowsmallheight;
+c.width = windowsmallwidth;
+c.style.top = windowthree +windowtop+bottommarginthree+ "px";
+c.style.left = window.innerHeight-bottommargin+inbetweenmargin +bottommarginthree+ "px";
+draw_ct("canvas2",ct_sort,[ctsize[0],ctsize[2]],current_slice[1],'cor_first');
+
+var c=document.getElementById("canvas3");
+c.height = windowsmallheight;
+c.width  = windowsmallwidth;
+c.style.top  = windowthree +windowtop+bottommarginthree+ "px";
+c.style.left = bottommarginthree +windowsmallwidth + window.innerHeight-bottommargin+inbetweenmargin +bottommarginthree+ "px";
+draw_ct("canvas3",ct_sort,[ctsize[0],ctsize[2]],current_slice[0],'sag_first');
+          }
+else{
+var c=document.getElementById("canvas");
+c.height = window.innerHeight-bottommargin;
+c.width = window.innerHeight-bottommargin;
+var ctx=c.getContext("2d");
+ctx.fillStyle='rgb(0,0,0)';
+ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight); 
+var windowthree = (window.innerHeight-bottommargin-bottommarginthree)*2/3;
+var windowsmallwidth = (windowthree-bottommarginthree)*1/2;
+var windowsmallheight = (window.innerHeight-bottommargin-bottommarginthree)*1/3;
+var c=document.getElementById("canvas2");
+c.height = windowsmallheight;
+c.width = windowsmallwidth;
+c.style.top = windowthree +windowtop+bottommarginthree+ "px";
+c.style.left = window.innerHeight-bottommargin+inbetweenmargin +bottommarginthree+ "px";
+var ctx=c.getContext("2d");
+ctx.fillStyle='rgb(0,0,0)';
+ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);
+
+var c=document.getElementById("canvas3");
+c.height = windowsmallheight;
+c.width  = windowsmallwidth;
+c.style.top  = windowthree +windowtop+bottommarginthree+ "px";
+c.style.left = bottommarginthree +windowsmallwidth + window.innerHeight-bottommargin+inbetweenmargin +bottommarginthree+ "px";
+var ctx=c.getContext("2d");
+ctx.fillStyle='rgb(0,0,0)';
+ctx.fillRect(0,0,ctx.canvas.clientWidth,ctx.canvas.clientHeight);
+}
+
+
+var c=document.getElementById("ThreeJS");
+c.style.left = window.innerHeight-bottommargin+inbetweenmargin +bottommarginthree+ "px";
+var SCREEN_WIDTH = windowthree, SCREEN_HEIGHT = windowthree;
+ renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+renderer.render( scene, camera );  
+
+        }
+
+
+</script>
+<script type="text/javascript" src="./Cloud DICOM_files/mouse_handlers.js"></script>
+<script>
+
+
+
+// standard global variables
+var container, controls, stats,renderer, camera;
+var keyboard = new THREEx.KeyboardState();
+var clock = new THREE.Clock();
+
+var size;
+var parameters = [];
+var parameters_str = [];
+var matrix4 = [];
+var matrix4d = [];
+var matrix_created = [];
+var mesh_created = [];
+var first_struct = 1;
+var current_structure;
+var current_color;
+
+
+var structtoggle;
+var scene;  
+ // RENDERER
+ if ( Detector.webgl )
+  renderer = new THREE.WebGLRenderer( {antialias:true} );
+else
+  renderer = new THREE.CanvasRenderer(); 
+
+//var SCREEN_WIDTH = 512, SCREEN_HEIGHT = 512;
+renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+container = document.getElementById( 'ThreeJS' );
+container.appendChild( renderer.domElement ); 
+renderer.setClearColor( 0x000000, 1 );
+renderer.autoClear = true;
+//renderer.autoUpdate = true;
+   container.style.cursor = 'pointer';
+//renderer.autoClear = false;
+
+
+var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 2000;
+camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
+controls = new THREE.OrbitControls( camera, renderer.domElement );
+//var ambientlight = new THREE.AmbientLight(0xffffff);
+
+//var light = new THREE.PointLight(0xffffff);
+//var light2 = new THREE.PointLight(0xffffff);
+var light = new THREE.HemisphereLight( 0xffffff, 0xffffff, 1 ); 
+
+//light.position.set(800,-800,-600);
+//light.position.set(-800,800,-600);
+//camera.position.set(-400,0,0);
+camera.position.set(500,100,100);
+light.position.set(-400,0,100);
+var path = "./textures/cube/SwedishRoyalCastle/";
+var format = '.jpg';
+var urls = [
+path + 'px' + format, path + 'nx' + format,
+path + 'py' + format, path + 'ny' + format,
+path + 'pz' + format, path + 'nz' + format
+];
+
+var reflectionCube = THREE.ImageUtils.loadTextureCube( urls );
+reflectionCube.format = THREE.RGBFormat;
+var refractionCube = THREE.ImageUtils.loadTextureCube( urls );
+reflectionCube.format = THREE.RGBFormat;
+refractionCube.mapping = THREE.CubeRefractionMapping;
+//var colorMaterial = new THREE.MeshPhongMaterial( { color: 0x990000, specular: 0x990000, envMap: reflectionCube, combine: THREE.MixOperation, reflectivity: 0.3, metal: true } );
+
+
+var meshall = [];
+scene = new THREE.Scene();
+scene.add(light);
+scene.add( new THREE.AxisHelper(1000) );
+scene.add(camera);
+renderer.render( scene, camera );
+camera.lookAt(scene.position);  
+
+sceneplane = new THREE.Scene();
+
+var planemesh = [];
+var planeMaterial = new THREE.MeshLambertMaterial( { color: 0x009900,transparent: true, opacity: 0.1,side: 2 } );
+function generate_planethree(z) 
+{
+var x1 = 0 - (ctsize[0]*pixelspacing[0])/2;
+var y1 = 0- (ctsize[1]*pixelspacing[1])/2
+var z1 = -z*pixelspacing[2] + (ctsize[2]*pixelspacing[2])/2;
+var x2 = (ctsize[0]*pixelspacing[0])/2
+var y2 = (ctsize[1]*pixelspacing[1])/2
+var plane=new THREE.Geometry();
+plane.vertices.push(
+    new THREE.Vector3(x1,z1,y1),//vertex0
+    new THREE.Vector3(x1,z1,y2),//1
+    new THREE.Vector3(x2,z1,y1),//2
+    new THREE.Vector3(x2,z1,y2)//3
+    );
+plane.faces.push(
+    new THREE.Face3(0,1,2),//use vertices of rank 2,1,0
+    new THREE.Face3(2,1,3)//vertices[3],1,2...
+    );
+plane.computeCentroids();
+plane.mergeVertices();
+plane.computeFaceNormals();
+plane.computeVertexNormals();
+planemesh[z1] = new THREE.Mesh( plane, planeMaterial );
+planemesh[z1].visible = false;
+scene.add(planemesh[z1]);
+}
+
+function get_planethree(z) 
+{
+if (z<ctsize[2]&& z>0 ){
+scene.__objects[z-1].visible = false;
+scene.__objects[z].visible = true;
+scene.__objects[z+1].visible = false;
+}
+}
+
+//var z1 = current_slice[2] - ctsize[2]/2;
+//var ctsize = [512,512,133];
+//var current_slice = [256,256,133/2];
+//  for (var i=0;i<ctsize[2];i+=1){
+//    generate_planethree(i); 
+//}
+
+
+
+renderer.sortObjects = false;
+animate();
+function init() 
+{
+  for (var refnum=0;refnum<struct.contours.length;refnum+=1){
+    if(typeof struct.contours[refnum] != 'undefined' && struct.ortype[refnum]!="MARKER") {  
+
+      if(parameters[struct.names[refnum]+" "]==false && mesh_created[refnum] == 1){
+        renderer.clear();
+        scene.remove(meshall[refnum]);
+      }
+
+      if(parameters[struct.names[refnum]+" "]==true && mesh_created[refnum] == 1){
+        renderer.clear();
+        scene.add(meshall[refnum]);
+      }
+
+      if(parameters[struct.names[refnum]+" "]==true && mesh_created[refnum] != 1){
+        mesh_created[refnum] = 1;
+        renderer.clear();
+        init_sub(matrix4[refnum],refnum);
+      }
+
+
+
+    }}}
+
+    function init_sub(matrix_temp,refnum) 
+    {
+      var down = [4,4,2];
+      var ctsized = [];
+      ctsized[0] = Math.ceil(ctsize[0]/down[0]);
+      ctsized[1] = Math.ceil(ctsize[1]/down[1]);
+      ctsized[2] = Math.ceil(ctsize[2]/down[2]);
+
+
+      var start = new Date().getTime();
+      var geometry = get_scaler_to_poly_down(THREE,matrix_temp,ctsize,ctsized,down,pixelspacing);
+      var end = new Date().getTime();
+      var time = end - start;
+      console.log(time/1000)
+
+//var geometry = get_scaler_to_poly(THREE,matrix4d[2],ctsized);
+geometry.computeCentroids();
+geometry.mergeVertices();
+geometry.computeFaceNormals();
+geometry.computeVertexNormals();
+//var colorMaterial = new THREE.MeshPhongMaterial( { color: 0x990000, specular: 0x990000, ambient: 0x990000, overdraw: 0.1, envMap: reflectionCube, combine: THREE.MixOperation, reflectivity: 0.3, metal: true } );
+if (body==true){
+//var colorMaterial = new THREE.MeshPhongMaterial( { color: 0x009900, specular: 0x009900,transparent: true, opacity: 0.2 } );
+//var colorMaterial = new THREE.MeshLambertMaterial( { color: 0x009900,transparent: true, opacity: 1,side: 2, shading: THREE.FlatShading } );
+var colorMaterial = new THREE.MeshPhongMaterial( { color: 0x990000, specular: 0x990000,transparent: true, opacity: .4, envMap: reflectionCube, combine: THREE.MixOperation, reflectivity: 0.6, metal: true } );
+colorMaterial['color']['r'] = struct.colors3d[refnum][0];
+colorMaterial['color']['g'] = struct.colors3d[refnum][1];
+colorMaterial['color']['b'] = struct.colors3d[refnum][2];
+}
+else{
+var colorMaterial = new THREE.MeshPhongMaterial( { color: 0x990000, specular: 0x990000, envMap: reflectionCube, combine: THREE.MixOperation, reflectivity: 0.6, metal: true } );
+
+colorMaterial['color']['r'] = struct.colors3d[refnum][0];
+colorMaterial['color']['g'] = struct.colors3d[refnum][1];
+colorMaterial['color']['b'] = struct.colors3d[refnum][2];
+colorMaterial['specular']['r'] = struct.colors3d[refnum][0];
+colorMaterial['specular']['g'] = struct.colors3d[refnum][1];
+colorMaterial['specular']['b'] = struct.colors3d[refnum][2];
+}
+
+//var colorMaterial = new THREE.MeshPhongMaterial( { color: 0x990000, specular: 0x990000, envMap: reflectionCube, combine: THREE.MixOperation, reflectivity: 0.6, metal: true } );
+//var colorMaterial = new THREE.MeshPhongMaterial( { color: 0x990000, specular: 0x990000, reflectivity: 0.5, metal: true } );
+
+//colorMaterial['ambient']['r'] = struct.colors3d[refnum][0];
+//colorMaterial['ambient']['g'] = struct.colors3d[refnum][1];
+//colorMaterial['ambient']['b'] = struct.colors3d[refnum][2];
+
+var mesh = new THREE.Mesh( geometry, colorMaterial );
+mesh.rotateX(Math.PI/2);
+mesh.rotateZ(Math.PI);
+
+meshall[refnum] = mesh;
+scene.add(meshall[refnum]);
+}
+
+guirender();
+function guirender() 
+{
+  parameters = 
+  {
+    stname:'' ,
+    color1: [ 0, 128, 255 ],
+    Structure: 'Name',
+    gui: null,
+    importfiles:    function() { importfiles(),folderimport.close()},
+    importdir:      function() { importdir(),folderimport.close()},
+    exportimage:    function() { exportimage(),folderexprtpatient.close()},
+    exportstruct:   function() { exportstruct(),folderexprtpatient.close()},
+    addstruct:   function() { createstructurefcn(),createstructure.close()},
+  };
+
+  parameters_str = {   };
+
+
+  parameters.gui = new dat.GUI({ autoPlace: false });
+  var customContainer = $('.moveGUI').append($(parameters.gui.domElement));
+
+
+  var folderimport = parameters.gui.addFolder('IMPORT PATIENT');
+  folderimport.add( parameters, 'importfiles' ).name("Select Files");
+  folderimport.add( parameters, 'importdir' ).name("Select Directory");
+  folderimport.open();
+
+
+
+
+
+function get_marching_contours_trans() 
+{
+  var point =[],points = [],pointss=[],pointsss=[];
+var refnum = struct.indexnum[current_structure];
+if(typeof struct.contours[refnum] != 'undefined' && struct.ortype[refnum]!="MARKER") { 
+for (var slicen=0;slicen<matrix4[refnum].length;slicen+=1){  
+  struct.contours[refnum][slicen] = [];
+var contour_line = MarchingSquaresJS.IsoContours(matrix4[refnum][slicen], 0.5,"");
+ var temp_total_contours = contour_line.length;
+ pointss = [];
+if (temp_total_contours>0){
+ for (var j=0;j<temp_total_contours;j+=1){
+  points = [];
+  for (var i=0;i<contour_line[j].length;i+=1){
+    point[0]=contour_line[j][i][1];
+    point[1]=contour_line[j][i][0];
+    points[i] = point;    
+  }
+pointss[j] = points;}
+pointsss[slicen] = pointss;}
+}
+struct.contours[refnum] = pointsss;
+console.log(struct.contours)
+}
+
+}
+
+
+function get_marching_contours() 
+{
+ // var point =[],points = [],pointss=[],pointsss=[];
+var refnum = struct.indexnum[current_structure];
+if(typeof struct.contours[refnum] != 'undefined' && struct.ortype[refnum]!="MARKER") { 
+for (var slicen=0;slicen<matrix4[refnum].length;slicen+=1){
+if(typeof struct.contours[refnum][slicen] != 'undefined') { 
+struct.contours[refnum][slicen] = [];
+struct.contours[refnum][slicen] = MarchingSquaresJS.IsoContours(matrix4[refnum][slicen], 0.5,"");
+ }
+}
+}}
+
+
+  parameters.listfunc = function() {
+    current_structure =this.object['Structure'];
+console.log(current_structure)
+text.color = struct.colorsname[current_structure]
+
+controlador.updateDisplay();
+parameters[current_structure]=true;
+parameters[current_structure+" "]=true;
+ struct_flood();
+ get_marching_contours();
+if (drawtool=='pencil'){
+  getpencil();
+}
+if (drawtool=='brush'){
+getbrushfcn();
+}
+ init();
+ animate();
+console.log(controlador.__color.__state)
+};
+
+
+
+
+function createstructurefcn() {
+if (structloaded==0){
+  createcontoursfcn();
+  structtoggle = parameters.gui.addFolder( 'CONTOURS' );
+  structtoggle3d = parameters.gui.addFolder( 'MESHS' );
+}
+else{
+currentstructure.remove(structlist);
+}
+structloaded=1+structloaded; 
+matrix4[structloaded] =get_3d_int8Array_mod(ctsize[0],ctsize[1],ctsize[2], 0);
+var refnum = structloaded;
+struct.ortype[refnum]!="Organ"
+struct.names[refnum] = structinputname.object.stname; 
+struct.indexnum[struct.names[refnum]] = refnum;
+var rgbt = current_color;
+//console.log(current_color)
+struct.colors[refnum] = "rgba("+rgbt[0].toString()+","+rgbt[1].toString()+", "+rgbt[2].toString()+", 1)";
+struct.colors3d[refnum] = [rgbt[0]/255,rgbt[1]/255,rgbt[2]/255];
+struct.colorsname[struct.names[refnum]] = [rgbt[0],rgbt[1],rgbt[2]];
+mesh_created[refnum] = 1;
+
+interpls[refnum] = new Uint8Array(ctsize[2]);
+console.log(interpls)
+var temp = [];
+struct.contours[refnum] = temp;
+console.log(struct.contours)
+var newstruct = new Object;
+newstruct[struct.names[refnum]] = true;
+var newstructname = new Object;
+newstructname[struct.names[refnum]] = struct.names[refnum];
+$.extend(parameters, newstruct);
+$.extend(parameters_str, newstructname);
+structtoggle.add( parameters, struct.names[refnum] ).onChange( parameters.showModelChanged ).listen();
+var newstruct3d = new Object;
+newstruct3d[struct.names[refnum]+" "] = true;
+$.extend(parameters, newstruct3d);
+structtoggle3d.add( parameters, struct.names[refnum]+" ").onChange( parameters.showModelChanged3d ).listen();
+structlist = currentstructure.add(parameters, 'Structure', parameters_str ).onChange( parameters.listfunc ).listen();
+current_structure = struct.names[structloaded];
+structlist.object.Structure = struct.names[structloaded];
+text.color = struct.colorsname[struct.names[structloaded]]
+controlador.updateDisplay();
+structlist.updateDisplay();
+currentstructure.open();
+ get_marching_contours();
+if (drawtool=='pencil'){
+  getpencil();
+}
+if (drawtool=='brush'){
+getbrushfcn();
+}
+
+};
+
+
+
+
+function createstructure_first_fcn() {
+createstructure = parameters.gui.addFolder('Create Structure');
+var creatstc = function() {
+  this.color = "#00c2ff"; // RGB array
+hexcolor=this.color;
+current_color=hexToRgb("#00c2ff");  
+};
+text = new creatstc();
+controladorcst= createstructure.addColor(text, 'color');
+$(".hue-field").width( 10 );
+controladorcst.onChange( function( colorValue  )
+{
+hexcolor=colorValue;
+current_color=hexToRgb(colorValue);
+});
+structinputname = createstructure.add( parameters, 'stname' ).name("Name");
+createstructure.add( parameters, 'addstruct' ).name("Add");
+createstructure.open();
+}
+createstructure_first_fcn();
+
+
+
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+result = hexToRgbnest(result);
+function hexToRgbnest(result) {
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;}
+var rbgout =[result.r,result.g,result.b];
+return rbgout;
+}
+
+
+
+
+function createcontoursfcn() {
+
+  currentstructure = parameters.gui.addFolder('Current Structure');
+  var FizzyText = function() {
+  this.color = "#00c2ff"; // RGB array
+};
+text = new FizzyText();
+controlador= currentstructure.addColor(text, 'color');
+$(".hue-field").width( 10 );
+controlador.onChange( function( colorValue  )
+{
+  struct.colorsname[current_structure]=colorValue;
+});
+};
+
+
+
+/*
+currentstructure = parameters.gui.addFolder('Current Structure');
+//currentstructure.add(parameters, 'structname');
+var FizzyText = function() {
+  this.color = [ 0, 128, 255 ]; // RGB array
+};
+ var text = new FizzyText();
+ var controlador= currentstructure.addColor(text, 'color');
+
+$(".hue-field").width( 10 );
+controlador.onChange( function( colorValue  )
+    {
+console.log(colorValue)
+console.log(text)
+    });
+var tempkk = { King: 'A', Queen: 'B', Rook: 'C' } ;
+var structlist = currentstructure.add(parameters, 'Structure', tempkk ).onChange( parameters.listfunc ).listen();
+currentstructure.open();
+console.log(structlist)
+structlist.object.Structure = 'B'
+//console.log(temp)
+//console.log(parameters)
+//structlist.add( parameters, struct.names[refnum] ).onChange( parameters.showcurrentstruct ).listen();
+*/
+
+
+
+
+parameters.showModelChanged = function() {
+  parameters['All Structures'] = false;
+  draw_ct("canvas",ct_sort,[ctsize[0],ctsize[1]],current_slice[2],'axial');
+  draw_struct_coronal();
+};
+parameters.showModelChanged3d = function() {
+ struct_flood();
+ init();
+ animate();
+};
+parameters.showAllChanged = function() {
+  for (var refnum=0;refnum<struct.contours.length;refnum+=1){
+    if(typeof struct.contours[refnum] != 'undefined') {  
+      if (parameters['All Structures']==true){
+        parameters[struct.names[refnum]]=true;
+
+      }
+      else{
+        parameters[struct.names[refnum]]=false;
+      }
+    }}
+//console.log(parameters)
+draw_ct("canvas",ct_sort,[ctsize[0],ctsize[1]],current_slice[2],'axial');
+draw_struct_coronal();
+  // struct_flood();
+  // init();
+  // animate();
+};
+
+
+
+
+}
+
+
+
+
+
+
+function rotateAroundWorldAxis( object, axis, radians ) {
+
+    var rotationMatrix = new THREE.Matrix4();
+
+    rotationMatrix.makeRotationAxis( axis.normalize(), radians );
+    rotationMatrix.multiply( object.matrix );                    // pre-multiply
+    object.matrix = rotationMatrix;
+    object.rotation.setFromRotationMatrix(object.matrix);
+}
+
+var xAxis = new THREE.Vector3(1,0,0);
+
+
+
+function animate() 
+{
+
+  requestAnimationFrame( animate );
+  render();   
+  update();
+}
+
+function update()
+{
+  controls.update();
+}
+
+function render() 
+{
+  renderer.render( scene, camera );
+}
+
+
+function animateplane() 
+{
+
+  requestAnimationFrame( animateplane);
+  renderplane();   
+  updateplane();
+}
+
+function updateplane()
+{
+  controls.update();
+}
+
+function renderplane() 
+{
+  // renderer.clear(false, true, false);
+  renderer.render( sceneplane, camera );
+}
+
+
+</script>
+
+<script>
+
+function createcontoursfcn() {
+  currentstructure = parameters.gui.addFolder('Current Structure');
+  var FizzyText = function() {
+  this.color = "#00c2ff"; // RGB array
+};
+text = new FizzyText();
+controlador= currentstructure.addColor(text, 'color');
+$(".hue-field").width( 10 );
+controlador.onChange( function( colorValue  )
+{
+  struct.colorsname[current_structure]=colorValue;
+});
+};
+
+var load_image = 1;
+var fl = [];
+var ct_sort = [];
+var ct_num = -1;
+var pos = [];
+var pixelspacing = [];
+var position = [];
+var ctsize = [];
+var current_slice = [];
+var ct = [];
+var ctbuffer =[];
+var ctfilename =[];
+var ctfilename_sort =[];
+var structbuffer =[];
+var structname =[];
+var text;
+var controlador;
+var structlist;
+var currentstructure;
+var structloaded=0;
+var refnums = [];
+var dim4;
+var canvas;
+var context;
+var img;
+var img2;
+var structinputname;
+function load_dicom(file) {
+  console.log()
+  var filename = file.name;
+  var reader = new FileReader();
+
+  reader.onload = function(e) {
+//    console.log(e.target)
+
+var arrayBuffer = reader.result;
+            // Here we have the file data as an ArrayBuffer.  dicomParser requires as input a
+            // Uint8Array so we create that here
+            var byteArray = new Uint8Array(arrayBuffer);
+   // Parse the byte array to get a DataSet object that has the parsed contents
+   var dataSet = dicomParser.parseDicom(byteArray);
+
+   //     console.log(dataSet.elements);
+   //     console.log(dataSet);
+    // create a typed array on the pixel data (this example assumes 16 bit unsigned data)
+     // access a string element
+ //   var sopInstanceUid = dataSet.string('x0020000d');
+//console.log('rows ' + dataSet.uint16('x00280010'));
+//console.log('cols ' + dataSet.uint16('x00280011'));
+//console.log('slope ' + dataSet.numStringValues('x00281053'));
+//console.log('intercept ' + dataSet.floatString('x00281052'));
+//console.log('position ' + dataSet.string('x00200032'));
+//console.log('pixelspacing ' + dataSet.text('x00280030'));
+
+//console.log('Modality ' + dataSet.text('x00080060'));
+var modality = dataSet.text('x00080060'); //modality
+if (modality!='CT' && load_image!=2){
+  load_image = 0;
+}
+    // get the pixel data element (contains the offset and length of the data)
+    if (modality=='CT'){
+//var generatedBlob = new Blob([dataSet.byteArray.buffer]);
+//saveAs(generatedBlob, "data.dcm");
+
+var pixelDataElement = dataSet.elements.x7fe00010;
+ctsize = [dataSet.uint16('x00280010'),dataSet.uint16('x00280011'),0];
+var   pixelData = new Uint16Array(dataSet.byteArray.buffer, pixelDataElement.dataOffset, pixelDataElement.length/2);
+var ct_slice = listToMatrix(pixelData, ctsize[0]);
+ct_num +=1;
+ct_sort[ct_num] = ct_slice;
+ctbuffer[ct_num] = dataSet.byteArray.buffer;
+ctfilename[ct_num] = filename;
+
+temp = dataSet.string('x00200032'); //pixel spacing
+temp = temp.replace(/\\/g, ' ');
+position = temp.split(" ").map(function(item) {
+  return parseInt(item, 10);   
+});
+pos[ct_num] = position[2];
+pixelspacing = dataSet.text('x00280030');
+pixelspacing = pixelspacing.replace(/\\/g, ' ');
+pixelspacing = pixelspacing.split(" ");
+pixelspacing[0] = Number(pixelspacing[0]);
+pixelspacing[1] = Number(pixelspacing[1]);
+}
+
+if (ct_num==fl-1 || modality=='RTSTRUCT'){ 
+
+  load_image = 2
+  ctsize[2] = ct_num;
+  sort_out = sort_array(pos);
+  index = sort_out[0];
+  var posz = sort_out[1];
+ // var ct_sort = [];
+ for (var i=0;i<index.length;i+=1){
+  //  ct_sort[i] = ct[index[i]];
+ //   ctfilename_sort[i] = ctfilename[index[i]];
+  //  ctbuffer_sort[i] = ctbuffer[index[i]];
+}
+
+ctbuffer = sortfilesindex(ctbuffer, index);
+ctfilename = sortfilesindex(ctfilename, index);
+ct_sort = sortfilesindex(ct_sort, index);
+
+
+current_slice = [256,256,Math.floor(ct_num/2)]
+
+position[2] = posz[posz.length - 1];
+pixelspacing = [pixelspacing[0],pixelspacing[1],posz[0]-posz[1]];
+/*
+document.getElementById('canvas').width = ctsize[0];
+document.getElementById('canvas').length = ctsize[1];
+
+document.getElementById('canvas2').width = ctsize[0];
+document.getElementById('canvas2').length = ctsize[2];
+
+document.getElementById('canvas3').width = ctsize[1];
+document.getElementById('canvas3').length = ctsize[2];
+*/
+imageratio = (window.innerHeight-bottommargin)/ctsize[0];
+console.log(imageratio)
+draw_ct("canvas",ct_sort,[ctsize[0],ctsize[1]],current_slice[2],'axial_first');
+draw_ct("canvas2",ct_sort,[ctsize[0],ctsize[2]],current_slice[1],'cor_first');
+draw_ct("canvas3",ct_sort,[ctsize[0],ctsize[2]],current_slice[0],'sag_first');
+
+  for (var i=0;i<ctsize[2];i+=1){
+    generate_planethree(i); 
+}
+
+get_planethree(current_slice[2]);
+var tempz = ctsize[2]*pixelspacing[2]*1.2;
+camera.position.set(tempz,100,tempz/2);
+light.position.set(tempz,0,100);
+camera.lookAt(scene.position);
+
+
+couchposition = ctsize[1];
+dim4 = [ctsize[0]*4,ctsize[1]*4];
+canvas=document.getElementById("canvas");
+context=canvas.getContext("2d");
+//img=context.createImageData(ctsize[0],ctsize[1]);
+//img2 =context.getImageData(0,0,ctsize[0],ctsize[1]);
+
+folderexprtpatient = parameters.gui.addFolder( 'EXPORT PATIENT' );
+folderexprtpatient.add( parameters, 'exportimage' ).name("IMAGE");
+}
+
+
+if (modality=='RTSTRUCT'){
+
+  createcontoursfcn();
+//structloaded = 1;
+
+
+structtoggle = parameters.gui.addFolder( 'CONTOURS' );
+structtoggle3d = parameters.gui.addFolder( 'MESHS' );
+folderexprtpatient.add( parameters, 'exportstruct' ).name("STRUCTURES");
+var newstruct = new Object;
+newstruct['All Structures'] = false;
+$.extend(parameters, newstruct);
+structtoggle.add( parameters, 'All Structures' ).onChange( parameters.showAllChanged ).listen();  
+
+
+structbuffer = dataSet.byteArray.buffer;
+structfilename = filename;
+get_structure_info(dataSet,pixelspacing,position);
+}
+}  
+reader.readAsArrayBuffer(file);
+}
+
+var MyBlobBuilder = function() {
+  this.parts = [];
+}
+
+MyBlobBuilder.prototype.append = function(part) {
+  this.parts.push(part);
+  this.blob = undefined; // Invalidate the blob
+};
+
+MyBlobBuilder.prototype.getBlob = function() {
+  if (!this.blob) {
+    this.blob = new Blob(this.parts, { type: "text/plain" });
+  }
+  return this.blob;
+};
+
+
+
+
+
+
+function sortfilesindex(input, index) 
+{
+  var output = [];
+  for (var i=0;i<index.length;i+=1){
+    output[i] = input[index[i]];
+  }
+  return output;
+}
+
+
+function loadfiles(e) 
+{
+  var files = e.target.files;
+  fl=files.length;
+  for (var j=0;j<fl;j+=1){
+    load_dicom(files[j]);}
+  }
+
+  function importfiles() 
+  {
+    $("#myfiles").click();
+    document.getElementById('myfiles').addEventListener('change', loadfiles, false);
+  }
+
+  function importdir() 
+  {
+    $("#mydir").click();
+    document.getElementById('mydir').addEventListener('change', loadfiles, false);
+  }
+
+
+
+
+  function do_something(index) {
+    var blob = new Blob([ctbuffer[index]]);
+    saveAs(blob, ctfilename[index]);
+  }
+
+  function exportimage() 
+  {
+    var list = [1,2,3,4,5];
+    list.forEach(function(index){
+//    do_something(index);
+});
+  }
+
+  function exportstruct() 
+  {
+
+
+    var myBlobBuilder = new MyBlobBuilder();
+    myBlobBuilder.append(structbuffer);
+    var blob = myBlobBuilder.getBlob();
+    saveAs(blob, structfilename);
+  }
+
+
+
+
+  var reasonableTimeToWaitForFileToLoad = 100000;
+//console.log(test);
+
+setTimeout(function() {
+
+//index = sort_array(pos);
+
+ //console.log(test);//`contents` access second attempt: prints the contents 'may be if the time allows.'
+}, reasonableTimeToWaitForFileToLoad);
+
+
+
+
+/*
+var interpls = [];
+ctsize = [512,512,133];
+var refnum = 0;
+var currentstructure = refnum;
+temp = new Uint8Array(ctsize[2]);
+temp[10] = 1;
+
+interpls[refnum] = temp;
+
+
+matrix4[refnum] =get_3d_int8Array_mod(ctsize[0], ctsize[1],ctsize[2], 0);
+
+var slice = 10;
+for (var i = 100; i < 200; i++){
+for (var j = 100; j < 200; j++){
+matrix4[refnum][slice][i][j] = 1;
+}}
+
+
+var slice = 20;
+temp[slice] = 1;
+var ii = 0;
+var jj = 0;
+//for (var i = 110; i < 190; i++){
+//for (var j = 110; j < 190; j++){
+for (var i = 130; i < 150; i++){
+for (var j = 100; j < 200; j++){
+//matrix4[refnum][slice][i+Math.round(ii)][j+Math.round(jj)] = 500;
+matrix4[refnum][slice][i+100][j+200] = 1;
+//matrix4[refnum][slice][i][j] = 1;
+}}
+
+var dimensions = [512,512,133]
+
+//draw_ct("canvas",matrix4[refnum],dimensions,20,'axial')
+
+
+get_interpolate();
+
+
+*/
+
+
+if (isChrome!=true){
+    alert(" For The Best Experience, Change Your Web Browser to Google Chrome\n Thank You For Using Cloud DICOM");
+}
+
+</script>
+
+  
+</div></div></body></html>

@@ -1,0 +1,5 @@
+http://test.storage02.linkingmed.com/dicom-worker-archive/2017/12/06/LM-ALG/3dc858c8/99445053/CT/6c43683896b2484c85c77de10e4fa79b.dcm?AWSAccessKeyId=EGC9ET6UG2SZOT8EKTAS&Expires=1827921206&Signature=CoA%2FxotmIUPhs43vufH3EW9St4U%3D
+
+6c43683896b2484c85c77de10e4fa79b
+
+http://test.storage02.linkingmed.com/dicom-worker-archive/2017/12/06/LM-ALG/3dc858c8/99445053/CT/6c43683896b2484c85c77de10e4fa79b.dcm?AWSAccessKeyId=EGC9ET6UG2SZOT8EKTAS&Expires=1827921206&Signature=CoA%2FxotmIUPhs43vufH3EW9St4U%3D
